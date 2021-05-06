@@ -37,7 +37,7 @@ function App() {
       <button onClick={setFertilizer}>
         {grow.fertilizer} g total
       </button>
-      <h2> {+grow.water+grow.fertilizer} days to maturity!</h2>
+      <h2> {+grow.water+grow.fertilizer} percent of growth to maturity!</h2>
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 import './App.css';
 
 function App() {
@@ -33,11 +32,35 @@ function App() {
     })
   };
 
+// add water fertilizer and sunlight to get total plant growth
   const percentGrowth = `${grow.water + grow.fertilizer + grow.sunlight}`;
+
+// use a Ternary operator to check if the values evaluate to at least 100 to declare a winner
+  const winner = `${(grow.water + grow.fertilizer + grow.sunlight) >= 100 ? 'Congrats! You have won!' : ' '}`
+
+// Need to have the user be able to lose for each one of the inputs for the plant.
+
+//the plant can drown, the water lose condition
+ const maxWater = `${grow.water <= 30 + (percentGrowth > 90) ? ' ' : 'Oh no! Your plant has too much water and drown'}`
+
+//the plant can burn, the fertilizer lose condition
+  const maxFertilizer = `${grow.fertilizer <= 30 + (percentGrowth > 90) ? ' ' : 'Oh no! Your plant has gotten too much fertilizer and burned'}`
+
+//the plant can wilt, the sunlight lose condition
+  const maxSunlight = `${(grow.sunlight <= 50) + (percentGrowth > 95) ? ' ' : 'Oh no! Your plant has gotten too much sun and wilted'}`
+
+// use a Ternary operator to check if the values evaluate to at least 110 to give the player the option to start a new game
+  const newGame = `${percentGrowth >= 110 ? 'Would you like to play again?' : ' '}`
+
+// refresh the page for a new game
+  const refreshPage = () => {
+    window.location.reload();
+  }
+
 
   return (
     <div className="App">
-      <h1>Grow a Plant Outdoors!</h1>
+      <h1>Grow a Plant</h1>
       <span aria-hidden>🌱</span>
       <h2>Add Water</h2>
       <button onClick={setWater}>
@@ -51,7 +74,15 @@ function App() {
       <button onClick={setSunlight}>
         {grow.sunlight} hours total
       </button>
-      <h2>{percentGrowth} percent of growth to maturity!</h2>
+      <h2>{percentGrowth} percent of growth to maturity</h2>
+      <h4>{winner}</h4>
+      <h4>{maxWater}</h4>
+      <h4>{maxFertilizer}</h4>
+      <h4>{maxSunlight}</h4>
+      <h4>{newGame}</h4>
+      <button onClick={refreshPage}>
+        Start a New Game
+      </button>
     </div>
   );
 }

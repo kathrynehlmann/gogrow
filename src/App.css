@@ -64,3 +64,18 @@ button:nth-of-type(2):focus {
 button:nth-of-type(2):active {
   background: #86410811;
 }
+
+/* Sunlight */
+h2:nth-of-type(3) {
+  color: #E2D58B;
+}
+button:nth-of-type(3) {
+  border-color: #E2D58B;
+}
+button:nth-of-type(3):focus {
+  box-shadow: 0 0 3px #E2D58B;
+  border-color: #E2D58B;
+}
+button:nth-of-type(3):active {
+  background: #E2D58B;
+}

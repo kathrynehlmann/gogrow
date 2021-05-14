@@ -1,29 +1,39 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
 
 function App() {
   //ToDo: create each object's baseline values (water, fertilizer) and utilize useState hook to manage the object's state
   const [grow, setGrow] = useState({
     water: 0,
-    fertilizer: 0
+    fertilizer: 0,
+    sunlight: 0
   });
 
-  //Update values immutably, by passing a whole new object, so each aspect of the plant's input can act independantly. Idea is that the values will add up to a numeric value of 100. Initial thought is using .min and .max to establish loss and win conditions for each plant input. Jess: Actually I need to limit the quanitity that the user can input, ideally within a range established in the state.
+  //Update values immutably, by passing a whole new object, so each aspect of the plant's input can act independantly. Idea is that the values will add up to a numeric value of 100. Initial thought is using .min and .max to establish loss and win conditions for each plant in
   const setWater = () => {
     setGrow({
-      water: grow.water + 25,
-      fertilizer: grow.fertilizer
+      ...grow,
+      water: grow.water + 10
     });
-
-  // Lodash has a _range
   };
 
   const setFertilizer = () => {
     setGrow({
-      water: grow.water,
-      fertilizer: grow.fertilizer + 25
+      ...grow,
+      fertilizer: grow.fertilizer + 10
     });
   };
+
+// Sunlight needs to be added
+  const setSunlight = () => {
+    setGrow({
+      ...grow,
+      sunlight: grow.sunlight + 20
+    })
+  };
+
+  const percentGrowth = `${grow.water + grow.fertilizer + grow.sunlight}`;
 
   return (
     <div className="App">
@@ -37,7 +47,11 @@ function App() {
       <button onClick={setFertilizer}>
         {grow.fertilizer} g total
       </button>
-      <h2> {+grow.water+grow.fertilizer} days to maturity!</h2>
+      <h2>Add Sunlight</h2>
+      <button onClick={setSunlight}>
+        {grow.sunlight} hours total
+      </button>
+      <h2>{percentGrowth} percent of growth to maturity!</h2>
     </div>
   );
 }

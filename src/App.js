@@ -48,11 +48,9 @@ function App() {
   const maxFertilizer = `${grow.fertilizer <= 30 + (percentGrowth > 90) ? ' ' : 'Oh no! Your plant has gotten too much fertilizer and burned'}`
 
 //the plant can wilt, the sunlight lose condition
+  const maxSunlight = `${(grow.sunlight <= 50) + (percentGrowth > 95) ? ' ' : 'Oh no! Your plant has gotten too much sun and wilted'}`
 
-
-
-
-// use a Ternary operator to check if the values evaluate to at least 100 to give the player the option to start a new game
+// use a Ternary operator to check if the values evaluate to at least 110 to give the player the option to start a new game
   const newGame = `${percentGrowth >= 110 ? 'Would you like to play again?' : ' '}`
 
 // refresh the page for a new game
@@ -81,6 +79,7 @@ function App() {
       <h4>{winner}</h4>
       <h4>{maxWater}</h4>
       <h4>{maxFertilizer}</h4>
+      <h4>{maxSunlight}</h4>
       <h4>{newGame}</h4>
       <button onClick={refreshPage}>
         Start a New Game

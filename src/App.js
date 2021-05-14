@@ -45,6 +45,7 @@ function App() {
  const maxWater = `${grow.water <= 30 + (percentGrowth > 90) ? ' ' : 'Oh no! Your plant has too much water and drown'}`
 
 //the plant can burn, the fertilizer lose condition
+  const maxFertilizer = `${grow.fertilizer <= 30 + (percentGrowth > 90) ? ' ' : 'Oh no! Your plant has gotten too much fertilizer and burned'}`
 
 //the plant can wilt, the sunlight lose condition
 
@@ -79,6 +80,7 @@ function App() {
       <h2>{percentGrowth} percent of growth to maturity</h2>
       <h4>{winner}</h4>
       <h4>{maxWater}</h4>
+      <h4>{maxFertilizer}</h4>
       <h4>{newGame}</h4>
       <button onClick={refreshPage}>
         Start a New Game
